@@ -20,8 +20,8 @@ ClassMethod TestMongoDBCrud() As %Status
         Write "========================== Insert Response ==============================",!
         /// insert a new user
         Set newUser = {
-            "name":"Claudio Devecchi Junior",
-            "email":"devecchi@intersystems.com"
+            "name":"Claudio Devechi Junior",
+            "email":"devechi@inter.com"
         }
         // check if the user exists
         Set tClaudiosId = ""
@@ -40,7 +40,7 @@ ClassMethod TestMongoDBCrud() As %Status
         Set beforeUpdateResponse = ##class(custom.python.pymongo.crud).Query(mongoUri, irisCredentials, "sample_mflix", "users", {"_id":(tClaudiosId)})
         Write "before update:",!
         Write beforeUpdateResponse.%ToJSON(),!
-        Set updateResponse = ##class(custom.python.pymongo.crud).InsertOrUpdate(mongoUri, irisCredentials, "sample_mflix", "users", {"email":"claudio.devecchi@intersystems.com"}, {"_id":(tClaudiosId)})
+        Set updateResponse = ##class(custom.python.pymongo.crud).InsertOrUpdate(mongoUri, irisCredentials, "sample_mflix", "users", {"email":"claudio.devechi@inter.com"}, {"_id":(tClaudiosId)})
         Write updateResponse.%ToJSON(),!
         Set afterUpdateResponse = ##class(custom.python.pymongo.crud).Query(mongoUri, irisCredentials, "sample_mflix", "users", {"_id":(tClaudiosId)})
         Write "after update:",!
