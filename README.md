@@ -3,4 +3,4 @@ Interoperates with MongoDB (via pymongo package) with InterSystems IRIS (includi
 
 You can check the implementation [here](test.cls)
 
-ps: Is compatible with IRIS versions that supports embedded python.
+ps: It's compatible with IRIS versions that supports embedded python.
