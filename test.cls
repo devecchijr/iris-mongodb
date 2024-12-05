@@ -20,7 +20,7 @@ ClassMethod TestMongoDBCrud() As %Status
         Write "========================== Insert Response ==============================",!
         /// insert a new user
         Set newUser = {
-            "name":"Claudio Devechi Junior",
+            "name":"Claudio Devecchi Junior",
             "email":"devechi@inter.com"
         }
         // check if the user exists
