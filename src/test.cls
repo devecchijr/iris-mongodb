@@ -8,7 +8,7 @@ ClassMethod TestMongoDBCrud() As %Status
 {
         Set sc = $$$OK
         Set mongoUri = "mongodb+srv://<db_user>:<db_password>@cluster0.y1uie.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0&tlsAllowInvalidCertificates=true"
-        Set irisCredentials = "mongodb" //the connection must have been created or the user and pwd will be explicit in you connection string
+        Set irisCredentials = "mongodb" //tthe credential must have been created or the username and password will be explicit in your connection string. In this case, this variable must be empty
         Write "=========================== Query Response ==============================",!
         /// query names that start with the A letter
         Set queryResponse = ##class(custom.python.pymongo.crud).Query(mongoUri, irisCredentials, "sample_mflix", "users", {"name": {"$regex": "^A", "$options": "i"}},{"_id":1,"name":1})
