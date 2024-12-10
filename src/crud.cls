@@ -257,7 +257,7 @@ ClassMethod QueryMongoDB(uri, dbName, collectionName, query, fields, sort, limit
 }
 
 /// Validates the mongo connection, given an uri connection string
-ClassMethod ValidateConnection(uri, timeout) As %SYS.Python [ Language = python ]
+ClassMethod ValidateConnection(uri, timeout = 5) As %SYS.Python [ Language = python ]
 {
     if not timeout:
         timeout = 5
@@ -267,7 +267,7 @@ ClassMethod ValidateConnection(uri, timeout) As %SYS.Python [ Language = python 
 
     def validate(uri):
         try:
-            client = MongoClient(uri, serverSelectionTimeoutMS=timeout)  
+            client = MongoClient(uri, serverSelectionTimeoutMS=timeout*1000)  
             client.server_info()  # Force an execution
             return "1"
         except InvalidURI:

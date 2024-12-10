@@ -14,21 +14,9 @@ Property Credentials As %String;
 
 Parameter SETTINGS = "MongoUri:MongoDB,ConnectTimeout:MongoDB,Credentials:MongoDB:credentialsSelector";
 
-/// validates the mongo connection
 Method OnInit() As %Status
 {
     Set tSC=$$$OK
-    Try {
-        set uri=..MongoUri
-        if ..Credentials'="" set uri = ##class(custom.python.pymongo.crud).GetUri(uri,..Credentials)
-        Set tConStatus = ##class(custom.python.pymongo.crud).ValidateConnection(uri,$Select(..ConnectTimeout<=0:5,1:..ConnectTimeout))
-        If $P(tConStatus,":",1)'="1" {
-            $$$LOGERROR($P(tConStatus,":",2))
-        }
-    }
-    Catch ex {
-        Set tSC=ex.AsStatus()
-    }
 	Quit tSC
 }
 
