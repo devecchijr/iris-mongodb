@@ -47,7 +47,7 @@ set updateResponse =..Adapter.InsertOrUpdate("sample_mflix", "users", newValues,
 Delete example:
 ```
 set filter = {"_id":(tObjectId)} //is the filter for deletion
-/// parameters: (dbName, filter,  deleteMany) => filter is %DynamicObject. deleteMany is false by default
+/// parameters: (dbName, collectionName, filter,  deleteMany) => filter is %DynamicObject. deleteMany is false by default
 /// updateResponse is an object with the updated id/ids (%DynamicObject)
 set updateResponse =..Adapter.Delete("sample_mflix", "users", filter)
 ```
