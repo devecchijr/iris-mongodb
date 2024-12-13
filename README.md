@@ -18,6 +18,7 @@ Parameter INVOCATION = "Queue";
 
 Query example: 
 ```
+///parameters: (dbName, collectionName, query, fields, sort, limit) => query, fields and sort are %DynamicObjects
 ///resultset is an array of objects (%DynamicArray)
 set resultset = ..Adapter.Query("mydb","mycollection", {"_id":(tId)})
 ```
@@ -28,6 +29,7 @@ set newUser = {
             "name":"Claudio Devecchi Junior",
             "email":"devechi@inters.com"
 }
+///parameters: (dbName, collectionName, objOrArray, filterForUpdate) => objOrArray and filterForUpdate are %DynamicObjects
 /// insertResponse is an object with the inserted id/ids (%DynamicObject)
 set insertResponse = ..Adapter.InsertOrUpdate("sample_mflix", "users", newUser)
 ```
@@ -36,6 +38,8 @@ Update example:
 ```
 set newValues = {"email":"claudio.devechi@inter.com"}
 set filter = {"_id":(tObjectId)} //is the filter for update
+///parameters: (dbName, collectionName, objOrArray, filterForUpdate) => objOrArray and filterForUpdate are %DynamicObjects
+///filterForUpdate defines update action
 /// updateResponse is an object with the updated id/ids (%DynamicObject)
 set updateResponse =..Adapter.InsertOrUpdate("sample_mflix", "users", newValues, filter)
 ```
@@ -43,6 +47,7 @@ set updateResponse =..Adapter.InsertOrUpdate("sample_mflix", "users", newValues,
 Delete example:
 ```
 set filter = {"_id":(tObjectId)} //is the filter for deletion
+///parameters: (dbName, filter,  deleteMany) => filter is %DynamicObject. deleteMany is false by default
 /// updateResponse is an object with the updated id/ids (%DynamicObject)
 set updateResponse =..Adapter.Delete("sample_mflix", "users", filter)
 ```
