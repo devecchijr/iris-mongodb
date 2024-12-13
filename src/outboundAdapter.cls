@@ -25,7 +25,7 @@ Method OnInit() As %Status
 /// fields is the projection (empty json for all properties)
 /// sort is for ordering (empty json for default order)
 /// limit is the N first records. Default is 0 for all
-Method Query(bdbName, collectionName, query As %DynamicObject, fields As %DynamicObject, sort As %DynamicObject, limit As %Integer = 0) As %DynamicObject [ WebMethod ]
+Method Query(dbName, collectionName, query As %DynamicObject, fields As %DynamicObject, sort As %DynamicObject, limit As %Integer = 0) As %DynamicObject [ WebMethod ]
 {
     set uri = ..MongoUri
     if ..Credentials'="" set uri=##class(custom.python.pymongo.crud).GetUri(uri,..Credentials)
@@ -33,7 +33,7 @@ Method Query(bdbName, collectionName, query As %DynamicObject, fields As %Dynami
     if '$Data(fields)||'$IsObject(fields) set fields = {}
     if '$Data(sort)||'$IsObject(sort) set sort = {}
     if '$Data(limit) set limit = 0
-    set tMongoResultSet = ##class(custom.python.pymongo.crud).QueryMongoDB(uri,bdbName,collectionName, query.%ToJSON(), fields.%ToJSON(), sort.%ToJSON(), limit)
+    set tMongoResultSet = ##class(custom.python.pymongo.crud).QueryMongoDB(uri,dbName,collectionName, query.%ToJSON(), fields.%ToJSON(), sort.%ToJSON(), limit)
     quit [].%FromJSON(tMongoResultSet)
 }
 
